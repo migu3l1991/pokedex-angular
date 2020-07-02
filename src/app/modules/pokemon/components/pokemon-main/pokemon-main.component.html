@@ -1,7 +1,7 @@
 <div class="toolbar-container">
   <mat-toolbar class="toolbar"
                color="primary">
-    <span>{{ showActions ? (pokemonName | titlecase) : 'Pokemon List' }}</span>
+    <span>{{ showHomeAction ? (pokemonName | titlecase) : 'Pokemon List' }}</span>
     <div [hidden]="showHomeAction">
       <form>
         <mat-form-field>
