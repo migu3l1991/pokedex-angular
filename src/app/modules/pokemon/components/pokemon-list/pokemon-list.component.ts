@@ -1,9 +1,9 @@
+import { Shared } from './../../../../shared/shared';
+import { Pokemon } from './../../../../models/classes/pokemon';
+import { IPokemonData, IPokemonList, IPokemonUrlData } from './../../../../models/interfaces/pokemon.interface';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Shared } from 'src/app/shared/shared';
-import { Pokemon } from 'src/app/models/classes/pokemon';
-import { IPokemonData, IPokemonList, IPokemonUrlData } from 'src/app/models/interfaces/pokemon.interface';
-import { forkJoin, of, Subscription, throwError } from 'rxjs';
-import { expand, delay, filter, takeWhile } from 'rxjs/operators';
+import { forkJoin, of, Subscription } from 'rxjs';
+import { expand, delay, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-list',

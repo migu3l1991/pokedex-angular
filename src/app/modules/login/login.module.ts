@@ -1,3 +1,7 @@
+import { PokemonService } from './../../models/services/pokemon.service';
+import { AuthGuard } from './../../shared/guards/auth.guard';
+import { Pokemon } from './../../models/classes/pokemon';
+import { Shared } from './../../shared/shared';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -6,10 +10,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { LoginPageRoutingModule } from './login-routing.module';
-import { Shared } from 'src/app/shared/shared';
-import { Pokemon } from 'src/app/models/classes/pokemon';
-import { PokemonService } from 'src/app/models/services/pokemon.service';
-import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 
 @NgModule({
   imports: [

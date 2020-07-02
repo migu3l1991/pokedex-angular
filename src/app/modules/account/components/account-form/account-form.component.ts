@@ -1,6 +1,6 @@
+import { Shared } from './../../../../shared/shared';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Shared } from 'src/app/shared/shared';
 import { Router } from '@angular/router';
 
 @Component({

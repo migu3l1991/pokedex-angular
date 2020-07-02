@@ -1,6 +1,6 @@
+import { Shared } from './../../../../shared/shared';
+import { IPokemonData } from './../../../../models/interfaces/pokemon.interface';
 import { Component, OnInit, Input } from '@angular/core';
-import { IPokemonData } from 'src/app/models/interfaces/pokemon.interface';
-import { Shared } from 'src/app/shared/shared';
 import { Router } from '@angular/router';
 
 @Component({

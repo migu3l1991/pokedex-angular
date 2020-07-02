@@ -1,7 +1,7 @@
+import { Shared } from './../../../../shared/shared';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Shared } from 'src/app/shared/shared';
 
 @Component({
   selector: 'app-login',

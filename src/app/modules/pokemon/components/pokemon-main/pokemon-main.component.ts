@@ -1,6 +1,6 @@
+import { Shared } from './../../../../shared/shared';
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { Shared } from 'src/app/shared/shared';
 import { Subscription, fromEvent } from 'rxjs';
 import { map, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 

@@ -1,8 +1,7 @@
-import { IChainLink } from './../../../../models/interfaces/pokemon.interface';
+import { Pokemon } from './../../../../models/classes/pokemon';
+import { Shared } from './../../../../shared/shared';
+import { IChainLink, IPokemonData, ISpecie, IChainEvolution } from './../../../../models/interfaces/pokemon.interface';
 import { Component, OnInit } from '@angular/core';
-import { Shared } from 'src/app/shared/shared';
-import { IPokemonData, ISpecie, IChainEvolution } from 'src/app/models/interfaces/pokemon.interface';
-import { Pokemon } from 'src/app/models/classes/pokemon';
 
 @Component({
   selector: 'app-pokemon-detail',
