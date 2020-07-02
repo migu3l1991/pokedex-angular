@@ -44,6 +44,9 @@ export class PokemonMainComponent implements OnInit, OnDestroy {
     this.statusActionsSubscription = this._shared.getStatusHomeActionHeader().subscribe((newStatus: boolean) => {
       this.showHomeAction = newStatus;
       this.pokemonSearchInput.nativeElement.value = '';
+      if (this.showHomeAction) {
+        this.pokemonName = this._shared.getPokemonData().name;
+      }
     });
   }
 

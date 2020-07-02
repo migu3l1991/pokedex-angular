@@ -87,7 +87,7 @@
       <button class="submit-button"
               mat-raised-button
               [disabled]="!accountForm.valid"
-              (click)="saveUser()">Register</button>
+              (click)="saveUser()">{{ editMode ? 'Update Profile' : 'Register' }}</button>
       <button class="cancel-button"
               mat-raised-button
               (click)="back()">Cancel</button>
