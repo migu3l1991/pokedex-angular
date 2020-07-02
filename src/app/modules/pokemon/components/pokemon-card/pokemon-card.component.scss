@@ -1,0 +1,28 @@
+.card {
+  width: 170px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.pokemon-type-container {
+  display: flex;
+  place-content: space-evenly;
+  flex-wrap: wrap;
+
+  mat-label {
+    font-size: 10px;
+    color: white;
+    background-color: gray;
+    padding: 2px 12px;
+    border-radius: 4px;
+  }
+}
+
+.pokemon-type-container > mat-label:not(:last-child) {
+  margin-right: 1px;
+}
+
+.pokemon-name {
+  color: black;
+  font-weight: bold;
+}

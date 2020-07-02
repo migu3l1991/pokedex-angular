@@ -1,0 +1,38 @@
+<div class="toolbar-container">
+  <mat-toolbar class="toolbar"
+               color="primary">
+    <span>{{ showActions ? (pokemonName | titlecase) : 'Pokemon List' }}</span>
+    <div [hidden]="showHomeAction">
+      <form>
+        <mat-form-field>
+          <mat-label>Pokemon Name/Type</mat-label>
+          <input matInput
+                 placeholder="Type pokemon name/type"
+                 #pokemonSearchInput>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="actions">
+      <button *ngIf="showHomeAction"
+              class="home"
+              mat-mini-fab
+              (click)="navigatePokemonList()">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button class="profile"
+              mat-mini-fab
+              (click)="editProfile()">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button class="exit"
+              mat-mini-fab
+              (click)="exit()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

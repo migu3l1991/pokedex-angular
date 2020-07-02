@@ -1,0 +1,39 @@
+.toolbar {
+  justify-content: space-between;
+  height: 64px;
+  width: 97%;
+  min-width: 700px;
+  background-color: #01bbae;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px 2px lightgoldenrodyellow;
+
+  mat-form-field {
+    font-size: small;
+  }
+}
+
+.toolbar-container {
+  display: flex;
+  justify-content: center;
+  height: 70px;
+}
+
+.actions > button:not(:last-child) {
+  margin-right: 8px;
+}
+
+.exit {
+  background-color: #e15f5f;
+}
+
+.profile {
+  background-color: #6498fe;
+}
+
+.home {
+  background-color: #1fc4b1;
+}
+
+.content {
+  height: calc(100% - 70px);
+}

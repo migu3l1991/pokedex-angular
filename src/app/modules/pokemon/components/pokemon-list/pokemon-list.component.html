@@ -1,0 +1,11 @@
+<div class="container"
+     appScrollDown
+     (additionalPokemonsEvent)="getMorePokemons()">
+  <div class="pokemon-card-container">
+    <mat-spinner *ngIf="isLoading"
+                 class="spinner"></mat-spinner>
+    <app-pokemon-card *ngFor="let pokemon of pokemonList"
+                      class="pokemon-card"
+                      [pokemon]="pokemon"></app-pokemon-card>
+  </div>
+</div>

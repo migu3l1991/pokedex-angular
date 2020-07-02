@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="card">
+    <div class="header">
+      <mat-label>Login</mat-label>
+    </div>
+    <div class="image">
+      <img [src]="'/assets/pikachu.png'">
+    </div>
+    <div class="input-fields">
+      <form class="loginForm"
+            [formGroup]="loginForm">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="email"
+                 matInput
+                 placeholder="Ex. pat@example.com"
+                 formControlName="email"
+                 required
+                 #email>
+          <mat-error *ngIf="loginForm.get('email').touched &&
+                       loginForm.get('email').hasError('pattern')"
+                     class="error">
+            Email is not valid
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input type="password"
+                 matInput
+                 formControlName="password"
+                 required
+                 #pass>
+        </mat-form-field>
+        <mat-error *ngIf="error"
+                   class="error">
+          User doesn't exist or password incorrect
+        </mat-error>
+      </form>
+    </div>
+    <div class="button">
+      <button class="login-button"
+              mat-raised-button
+              [disabled]="!loginForm.valid"
+              (click)="login(email.value, pass.value)">Login</button>
+    </div>
+    <div class="create-account-option">
+      <label>Create an <a routerLink="account">Account</a></label>
+    </div>
+  </div>
+</div>

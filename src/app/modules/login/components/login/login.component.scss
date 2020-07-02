@@ -1,0 +1,26 @@
+.card > div:not(:first-child) {
+  margin-top: 12px;
+}
+
+.header {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-button {
+  color: white;
+  background-color: #1fc4b1;
+}
+
+.error {
+  font-size: 10px;
+}
+
+.input-fields {
+  width: 80%;
+}

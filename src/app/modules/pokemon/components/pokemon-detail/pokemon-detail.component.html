@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="card">
+    <div class="image">
+      <img [src]="pokemon?.sprites?.front_default">
+    </div>
+    <div class="info-container">
+      <div class="tag-value">
+        <div class="tag">
+          <mat-label>Id</mat-label>
+        </div>
+        <div class="value">
+          <mat-label>{{ pokemon.id }}</mat-label>
+        </div>
+      </div>
+      <div class="tag-value">
+        <div class="tag">
+          <mat-label>Name</mat-label>
+        </div>
+        <div class="value">
+          <mat-label>{{ pokemon.name | titlecase }}</mat-label>
+        </div>
+      </div>
+      <div class="tag-value">
+        <div class="tag">
+          <mat-label>Type</mat-label>
+        </div>
+        <div class="value">
+          <mat-label *ngFor="let type of pokemon.types"
+                 class="special">{{ type.type.name | uppercase }}</mat-label>
+        </div>
+      </div>
+      <div class="tag-value">
+        <div class="tag">
+          <mat-label>Height</mat-label>
+        </div>
+        <div class="value">
+          <mat-label>{{ pokemon.height }}</mat-label>
+        </div>
+      </div>
+      <div class="tag-value">
+        <div class="tag">
+          <mat-label>Weight</mat-label>
+        </div>
+        <div class="value">
+          <mat-label>{{ pokemon.weight }}</mat-label>
+        </div>
+      </div>
+      <div class="tag-value">
+        <div class="tag">
+          <mat-label>Moves</mat-label>
+        </div>
+        <div class="value move">
+          <mat-label *ngFor="let move of pokemon.moves"
+                 class="special move">{{ move.move.name | titlecase }}</mat-label>
+        </div>
+      </div>
+      <div class="tag-value">
+        <div class="tag">
+          <mat-label>Chain Evolution</mat-label>
+        </div>
+        <div class="value">
+          <mat-label *ngFor="let evolution of evolutionsList"
+                 class="special">{{ evolution | titlecase }}</mat-label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.container {
+  align-items: flex-start;
+}
+
+.search-section {
+  display: flex;
+}
+
+.pokemon-card {
+  display: flex;
+  margin: 2%;
+  align-items: center;
+}
+
+.pokemon-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.spinner {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}

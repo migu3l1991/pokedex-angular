@@ -1,0 +1,32 @@
+.accountForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.card > div:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.header {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-button {
+  color: white;
+  background-color: #1fc4b1;
+}
+
+.cancel-button {
+  color: white;
+  background-color: #e15f5f;
+}
+
+.buttons > button:first-child {
+  margin-bottom: 5px;
+}

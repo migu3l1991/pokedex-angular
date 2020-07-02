@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="card">
+    <div class="header">
+      <mat-label>{{ editMode ? 'Update Profile' : 'Register' }}</mat-label>
+    </div>
+    <div class="input-fields">
+      <form class="accountForm"
+            [formGroup]="accountForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input type="text"
+                 matInput
+                 formControlName="name">
+          <mat-error *ngIf="
+              accountForm.get('name').touched &&
+              accountForm.get('name').hasError('required')
+            "
+                     class="error">
+            Name field is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email"
+                 matInput
+                 formControlName="email"
+                 [readonly]="editMode"
+                 placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="
+              accountForm.get('email').touched &&
+              accountForm.get('email').hasError('required')
+            "
+                     class="error">
+            Email field is required
+          </mat-error>
+          <mat-error *ngIf="
+              accountForm.get('email').touched &&
+              accountForm.get('email').hasError('pattern')
+            "
+                     class="error">
+            Email is not valid
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input type="password"
+                 matInput
+                 formControlName="pass">
+          <mat-error *ngIf="
+              accountForm.get('pass').touched &&
+              accountForm.get('pass').hasError('required')
+            "
+                     class="error">
+            Password field is required
+          </mat-error>
+          <mat-error *ngIf="
+              accountForm.get('pass').touched &&
+              accountForm.get('pass').hasError('mustMatch')
+            "
+                     class="error">
+            Both passwords must be equals
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm Password</mat-label>
+          <input type="password"
+                 matInput
+                 formControlName="confirmPass">
+          <mat-error *ngIf="
+              accountForm.get('confirmPass').touched &&
+              accountForm.get('confirmPass').hasError('required')
+            "
+                     class="error">
+            Password field is required
+          </mat-error>
+          <mat-error *ngIf="
+              accountForm.get('confirmPass').touched &&
+              accountForm.get('confirmPass').hasError('mustMatch')
+            "
+                     class="error">
+            Both passwords must be equals
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="buttons">
+      <button class="submit-button"
+              mat-raised-button
+              [disabled]="!accountForm.valid"
+              (click)="saveUser()">Register</button>
+      <button class="cancel-button"
+              mat-raised-button
+              (click)="back()">Cancel</button>
+    </div>
+  </div>
+</div>

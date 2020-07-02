@@ -1,0 +1,52 @@
+.card {
+  width: 50%;
+  min-width: 560px;
+}
+
+.info-container {
+  text-align: center;
+  width: 100%;
+}
+
+.tag-value {
+  display: flex;
+  margin-bottom: 2%;
+}
+
+.tag {
+  color: gray;
+  width: 12%;
+  margin-right: 2%;
+  align-self: center;
+}
+
+.value {
+  display: flex;
+  width: 86%;
+  justify-content: center;
+  align-items: center;
+}
+
+.special {
+  font-size: 10px;
+  color: white;
+  background-color: gray;
+  padding: 2px 12px;
+  border-radius: 4px;
+}
+
+.value.move {
+  flex-wrap: wrap;
+}
+
+.special.move {
+  padding: 2px 5px;
+}
+
+img {
+  width: 200px;
+}
+
+.value > .special:not(:last-child) {
+  margin-right: 1px;
+}
