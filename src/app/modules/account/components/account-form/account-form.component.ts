@@ -38,11 +38,17 @@ export class AccountFormComponent implements OnInit, OnDestroy {
             Validators.pattern('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$'),
           ],
         ],
-        pass: [this.editMode ? this.profile.pass : '', [Validators.required.bind(this)]],
-        confirmPass: [this.editMode ? this.profile.pass : '', [Validators.required.bind(this)]],
+        pass: [
+          this.editMode ? this.profile.pass : '',
+          [Validators.required.bind(this), Validators.pattern('((?=.*[A-Z].*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])).{8,}')],
+        ],
+        confirmPass: [
+          this.editMode ? this.profile.pass : '',
+          [Validators.required.bind(this), Validators.pattern('((?=.*[A-Z].*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])).{8,}')],
+        ],
       },
       {
-        validator: this.validatePass('pass', 'confirmPass'),
+        validator: this.validatePass,
       },
     );
   }
@@ -58,21 +64,10 @@ export class AccountFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  validatePass(controlPass: string, controlConfirmPass: string) {
-    return (formGroup: FormGroup) => {
-      const control = formGroup.controls[controlPass];
-      const matchingControl = formGroup.controls[controlConfirmPass];
-
-      if (control.value && matchingControl.value) {
-        if (control.value !== matchingControl.value) {
-          control.setErrors({ mustMatch: true });
-          matchingControl.setErrors({ mustMatch: true });
-        } else {
-          matchingControl.setErrors(null);
-          control.setErrors(null);
-        }
-      }
-    };
+  validatePass(group: FormGroup) {
+    const pass = group.get('pass').value;
+    const confirmPass = group.get('confirmPass').value;
+    return pass === confirmPass ? null : { mustMatch: true };
   }
 
   getProfile() {

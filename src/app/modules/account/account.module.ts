@@ -6,6 +6,8 @@ import { AccountFormComponent } from './components/account-form/account-form.com
 import { AccountPageRoutingModule } from './account-routing.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -14,7 +16,9 @@ import { MatButtonModule } from '@angular/material/button';
     AccountPageRoutingModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
   ],
   declarations: [AccountFormComponent]
 })
