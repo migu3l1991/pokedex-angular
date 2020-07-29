@@ -30,3 +30,9 @@
 .buttons > button:first-child {
   margin-bottom: 5px;
 }
+
+.error {
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+}

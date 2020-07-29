@@ -6,19 +6,14 @@
     <div class="input-fields">
       <form class="accountForm"
             [formGroup]="accountForm">
-        <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input type="text"
-                 matInput
-                 formControlName="name">
-          <mat-error *ngIf="
-              accountForm.get('name').touched &&
-              accountForm.get('name').hasError('required')
-            "
-                     class="error">
-            Name field is required
-          </mat-error>
-        </mat-form-field>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input type="text"
+                   matInput
+                   formControlName="name">
+          </mat-form-field>
+        </div>
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input type="email"
@@ -26,62 +21,84 @@
                  formControlName="email"
                  [readonly]="editMode"
                  placeholder="Ex. pat@example.com">
-          <mat-error *ngIf="
-              accountForm.get('email').touched &&
-              accountForm.get('email').hasError('required')
-            "
-                     class="error">
-            Email field is required
-          </mat-error>
-          <mat-error *ngIf="
-              accountForm.get('email').touched &&
-              accountForm.get('email').hasError('pattern')
-            "
-                     class="error">
-            Email is not valid
-          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
           <input type="password"
                  matInput
                  formControlName="pass">
-          <mat-error *ngIf="
-              accountForm.get('pass').touched &&
-              accountForm.get('pass').hasError('required')
-            "
-                     class="error">
-            Password field is required
-          </mat-error>
-          <mat-error *ngIf="
-              accountForm.get('pass').touched &&
-              accountForm.get('pass').hasError('mustMatch')
-            "
-                     class="error">
-            Both passwords must be equals
-          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Confirm Password</mat-label>
           <input type="password"
                  matInput
                  formControlName="confirmPass">
-          <mat-error *ngIf="
-              accountForm.get('confirmPass').touched &&
-              accountForm.get('confirmPass').hasError('required')
-            "
-                     class="error">
-            Password field is required
-          </mat-error>
-          <mat-error *ngIf="
-              accountForm.get('confirmPass').touched &&
-              accountForm.get('confirmPass').hasError('mustMatch')
-            "
-                     class="error">
-            Both passwords must be equals
-          </mat-error>
+
         </mat-form-field>
       </form>
+    </div>
+    <div>
+      <mat-error *ngIf="
+                   accountForm.get('name').touched &&
+                   accountForm.get('name').hasError('required')
+                 "
+                 class="error">
+        <li>Name is required</li>
+      </mat-error>
+      <mat-error *ngIf="
+                   accountForm.get('email').touched &&
+                   accountForm.get('email').hasError('required')
+                 "
+                 class="error">
+        <li>Email is required</li>
+      </mat-error>
+      <mat-error *ngIf="
+                   accountForm.get('email').touched &&
+                   accountForm.get('email').hasError('pattern')
+                 "
+                 class="error">
+        <li>Email is not valid</li>
+      </mat-error>
+
+
+      <mat-error *ngIf="
+                   accountForm.get('pass').touched &&
+                   accountForm.get('pass').hasError('required')
+                 "
+                 class="error">
+        <li>Password is required</li>
+      </mat-error>
+      <mat-error *ngIf="
+                   accountForm.get('confirmPass').touched &&
+                   accountForm.get('confirmPass').hasError('required')
+                 "
+                 class="error">
+        <li>Confirmation Password is required</li>
+      </mat-error>
+      <mat-error *ngIf="
+                   (accountForm.get('pass').touched &&
+                   accountForm.get('pass').hasError('pattern')) ||
+                   (accountForm.get('confirmPass').touched &&
+                   accountForm.get('confirmPass').hasError('pattern'))
+                 "
+                 class="error">
+        <li>Password must have:</li>
+        At least 8 characters<br>
+        At least 2 Uppercase<br>
+        At least 1 special character<br>
+        At least 1 number<br>
+      </mat-error>
+      <mat-error *ngIf="accountForm.hasError('mustMatch')"
+                 class="error">
+        <li>Both passwords must be equals</li>
+      </mat-error>
+      <!-- <mat-error *ngIf="
+                   accountForm.get('confirmPass').touched &&
+                   accountForm.get('confirmPass').hasError('mustMatch')
+                 "
+                 class="error">
+        <li>Both passwords must be equals</li>
+      </mat-error> -->
     </div>
     <div class="buttons">
       <button class="submit-button"

@@ -3,7 +3,7 @@ import { Pokemon } from './../../../../models/classes/pokemon';
 import { IPokemonData, IPokemonList, IPokemonUrlData } from './../../../../models/interfaces/pokemon.interface';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { forkJoin, of, Subscription } from 'rxjs';
-import { expand, delay, filter } from 'rxjs/operators';
+import { expand, delay, filter, flatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -57,39 +57,26 @@ export class PokemonListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     if (this.isSearchingByFilter) {
       this._pokemonService.getPokemons(this.offset.toString(), this.limit.toString()).pipe(
-        expand((data: IPokemonList) => {
-          if (data && data.results && data.results.length) {
-            this.hasMorePokemons = data.next ? true : false;
-            const calls = [];
-            data.results.forEach((pokemonData: IPokemonUrlData) => {
-              calls.push(this._pokemonService.getPokemonInfoByNameOrId(pokemonData.name));
-            });
-            return forkJoin(calls);
-          }
+        expand((data) => {
+          delay(1000),
+          this.hasMorePokemons = data.next ? true : false;
           if (this.hasMorePokemons) {
             this.offset += 50;
-            return this._pokemonService.getPokemons(this.offset.toString(), this.limit.toString()).pipe(
-              delay(1000),
-              expand((data1: IPokemonList) => {
-                if (data1 && data1.results && data1.results.length) {
-                  const calls = [];
-                  data1.results.forEach((pokemonData: IPokemonUrlData) => {
-                    calls.push(this._pokemonService.getPokemonInfoByNameOrId(pokemonData.name));
-                  });
-                  return forkJoin(calls);
-                }
-                return of();
-              }),
-            );
-          }
-          if (!this.hasMorePokemons) {
+          } else {
             this.isLoading = false;
+            return of();
           }
-          return of();
+          return this._pokemonService.getPokemons(this.offset.toString(), this.limit.toString());
         }),
-        filter((data) => data && data.length > 0),
-        delay(1000)
-      ).subscribe((pokemonData: IPokemonData[]) => {
+        flatMap((pokemonList: IPokemonList) => {
+          const calls = [];
+          pokemonList.results.forEach((pokemonData: IPokemonUrlData) => {
+            calls.push(this._pokemonService.getPokemonInfoByNameOrId(pokemonData.name));
+          });
+          return forkJoin(calls);
+        }),
+        filter((pokemonData: IPokemonData[]) => pokemonData && pokemonData.length > 0),
+      ).subscribe((pokemonData) => {
         pokemonData = pokemonData.filter((data) => {
           let typeValidation = false;
           data.types.filter((type) => {
